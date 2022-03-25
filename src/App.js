@@ -186,7 +186,7 @@ const App = ()=>{
 				</div>
 
 				<div className="bio">
-				イーサリアムウォレットを接続して、メッセージを作成したら、<span role="img" aria-label="hand-wave">👋</span>を送ってください<span role="img" aria-label="shine">✨</span>
+				イーサリアムウォレットを接続して、メッセージを作成したら、<br></br><span role="img" aria-label="hand-wave">👋</span>を送ってください<span role="img" aria-label="shine">✨</span>
 				</div>
 				<br />
 
@@ -201,28 +201,32 @@ const App = ()=>{
 						Wallet Connected
 					</button>
 				)}
-				{currentAccount && (
-				<button className="waveButton" onClick={wave}>
-					Wave at Me
-				</button>
-				)}
-				{currentAccount &&(<textarea name="messageArea"
+
+				{currentAccount &&(<textarea className="messageArea" name="messageArea"
 					placeholder="メッセージはこちら"
 					type="text"
 					id="message"
 					value={messageValue}
 					onChange={e => setMessageValue(e.target.value)}
 				/>)}
+
+				{currentAccount && (
+				<button className="waveButton" onClick={wave}>
+					Wave at Me
+				</button>
+				)}
+
 				{currentAccount &&(
 					allWaves.slice(0).reverse().map((wave, index)=>{
 						return (
-							<div key={index} style={{ backgroundColor: "#f8f8FF", marginTop: "16px", padding: "8px"}}>
+							<div key={index} className="wave">
 								<div>Address: {wave.address}</div>
 								<div>Time: {wave.timestamp.toString()}</div>
 								<div>Message: {wave.message}</div>
 							</div>)
 					})
 				)}
+
 			</div>
 		</div>
 	);
